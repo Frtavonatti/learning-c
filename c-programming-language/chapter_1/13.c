@@ -13,6 +13,7 @@ int main () {
     lengtharr[i] = 0;
   }
 
+  // Use ctrl + D (linux) / ctrl + Z (windows) to end the execution of the program (EOF)
   while ((c = getchar()) != EOF) {
     if (c == ' ' || c == '\n' || c == '\t') {
       if (lengtharr[wlength])

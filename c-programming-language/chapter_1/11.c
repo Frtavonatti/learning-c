@@ -1,12 +1,9 @@
 #include <stdio.h>
 
-// [ ] Pendieng Review
-
 #define IN  1
 #define OUT 0
 
-// Exercise 11
-/* count lines, words and characters in input */
+// Exercise 11: count lines, words and characters in input
 int main ()
 {
   int c, nl, nw, nc, state;
@@ -14,18 +11,21 @@ int main ()
   state = OUT;
   nl = nw = nc = 0;
 
-  while ((nc = getchar()) != EOF) {
-    ++nc;
-    if (nc == '\n')
-      ++nl;
-    if (nc == ' ' || nc == '\n' || nc == '\t') {
+  // Use ctrl + D (linux) / ctrl + Z (windows) to end the execution of the program (EOF)
+  while ((c = getchar()) != EOF) {
+    if (c == ' ' || c == '\n' || c == '\t')
       state = OUT;
-    } else {
-      state = IN;
-      ++nw;
+      if (c == '\n')
+        ++nl;
+    else {
+      ++nc; // only count a char if its not a separator 
+      if (state == OUT) {
+        state = IN;
+        ++nw;
+      }
     }
   }
 
-  printf("%d, %d, %d\n", nl, nw, nc);
+  printf("Newlines: %d, Words: %d, Characters: %d\n", nl, nw, nc);
   return 0;
 }

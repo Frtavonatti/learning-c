@@ -7,6 +7,7 @@ lengtharr = [0 for i in range(9)]
 # Read input as a string
 data = sys.stdin.read()
 
+# Use ctrl + D (linux) / ctrl + Z (windows) to end the execution of the program (EOF)
 for c in data:
     if c == ' ' or c == '\n' or c == '\t':
         if wlength > 0:
