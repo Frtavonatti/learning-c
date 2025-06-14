@@ -1,5 +1,6 @@
 import sys
 
+# EXERCISE 13
 wlength = 0
 anotherlength = 0
 lengtharr = [0 for i in range(9)]

@@ -1,1 +1,1 @@
-- [ ] Review exercise 13-14
+- [x] Review exercise 13-14
