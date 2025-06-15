@@ -1,1 +1,2 @@
 - [x] Review exercise 13-14
+- [ ] Make exercises 14-24
