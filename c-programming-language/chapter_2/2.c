@@ -1,40 +1,31 @@
 #include <stdio.h> 
 
-#define lim 100
+enum { lim = 40 };
 
-// - [ ] PENDING REVIEW
-// Exercise 2.2: Write a loop equivalent to the for loop above without using && or ||
 int example () {
   int c;
-  char s[10];
+  char s[lim] = {0};
+  int i;
 
-  for (int i = 0; i < lim-1 && (c=getchar()) != '\n' && c != EOF; ++i) 
+  for (i = 0; i < lim-2 && (c=getchar()) != '\n' && c != EOF; ++i) 
     s[i] = c;
 
-  for (int i = 0; i < 10; ++i)
-    printf("%c", s[i]);
+  s[i++] = '\n';
+  s[i] = '\0'; // Null-terminate the string
+
+  for (int j = 0; j < i; ++j)
+    printf("%c", s[j]);
   
   return 0;
 }
 
-int solution1 () {
+// Exercise 2.2: Write a loop equivalent to the for loop above without using && or ||
+int solution () {
   int c;
-  char s[10];
+  char s[lim] = {0};
+  int i;
 
-  for (int i = 0; i < lim-1 == ((c=getchar()) != '\n') == (c != EOF); ++i) 
-    s[i] = c;
-
-  for (int i = 0; i < 10; ++i)
-    printf("%c", s[i]);
-  
-  return 0;
-}
-
-int solution2 () {
-  int c;
-  char s[10];
-
-  for (int i = 0; ; ++i) {
+  for (i = 0; ; ++i) {
     if (i >= lim-1) 
       break;
     if ((c=getchar()) == '\n')
@@ -44,15 +35,34 @@ int solution2 () {
     s[i] = c;
   }
 
-  for (int i = 0; i < 10; ++i)
-    printf("%c", s[i]);
+  s[i++] = '\n';
+  s[i] = '\0';
+
+  for (int j = 0; j < i; ++j)
+    printf("%c", s[j]);
   
   return 0;
 }
 
 int main () {
-  solution1();
-  solution2();
-  
+  example();
+  solution();
   return 0;
 }
+
+// int incorrect_solution () {
+//   int c;
+//   char s[lim];
+//   int i;
+
+//   for (i = 0; i < lim-1 == ((c=getchar()) != '\n') == (c != EOF); ++i) 
+//     s[i] = c;
+  
+//   s[i++] = '\n';
+//   s[i] = '\0';
+
+//   for (int j = 0; j < i; ++j)
+//     printf("%c", s[j]);
+  
+//   return 0;
+// }
