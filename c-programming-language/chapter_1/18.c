@@ -1,0 +1,3 @@
+#include <stdio.h>
+
+// Exercise 1.18: Write a program to remove trailing balnks and tabs form each line of input and to delete entirely blank lines 
