@@ -32,7 +32,7 @@ int main() {
   char line[MAXLINE];    /* current line */
   char longest[MAXLINE]; /* stores the longest line */
 
-  while ((len = get_line(line, MAXLINE) > 0)) {
+  while ((len = get_line(line, MAXLINE)) > 0) {
     if (len > max) {
       max = len;
       copy(line, longest);
