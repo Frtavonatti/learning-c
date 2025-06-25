@@ -1,7 +1,7 @@
 // Exercise 1.3: Add a header before the table 
 #include <stdio.h>
 
-int whileFahrenheitToCelsius() {
+int while_fahr_to_celsius() {
   float fahr, celsius;
   float lower, upper, step;
   
@@ -19,7 +19,7 @@ int whileFahrenheitToCelsius() {
   }
 }
 
-int forFahrenheitToCelsius() {
+int for_fahr_to_celsius() {
   int fahr;
 
   printf("Fahr \t Celsius \n");
@@ -27,15 +27,8 @@ int forFahrenheitToCelsius() {
     printf("%d\t %6.1f\n", fahr, (5.0/9.0)*(fahr-32));
 }
 
-// Exercise 1.4: Celsius to fahrenheit
-int celsiusToFahrenheit() {
-  printf("Hello, World");  
-}
-
-
 int main() {
-  whileFahrenheitToCelsius();
-  // forFahrenheitToCelsius();
-  celsiusToFahrenheit();
+  while_fahr_to_celsius();
+  for_fahr_to_celsius();
 }
 

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Exercise 1.1 -1.2
+// Exercise 1.1
 int put() {
   puts("Hello world");
 }
