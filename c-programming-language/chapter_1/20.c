@@ -20,24 +20,16 @@ void get_line_and_detab(char str[], int lim) {
 
   while ((c = getchar()) != EOF && c != '\n') {
     if (c == '\t') {
-      printf("i: %d\n", i); /* delete this print */
-      printf("Modulo: %d\n", (TABS - i) % 8); /* delete this print */
-      for (int j = 0; j < TABS; j++) {
+      int spaces_to_fill = TABS - (i % TABS);
+      for (int j = 0; j < spaces_to_fill; j++) {
         str[i++] = ' ';
       }
-    }
-    else
+    } else
       str[i++] = c;
   }
 
-  if (c == '\n')
+  if (c == '\n' && i < lim -1)
     str[i++] = '\n';
 
   str[i] = '\0';
 }
-
-// 12 % 8 = 4       -> 4 (TAB - mod)
-// 17 % 8 = 1       -> 7 (TAB - mod)
-// 36 % 8 = 4       -> 4 (TAB - mod)
-
-// TABS - ((TABS - i) % 8)
