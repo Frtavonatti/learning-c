@@ -10,10 +10,13 @@ int main() {
   char reversed[MAXLINES];
   int len = get_line(input, MAXLINES);
   int last_index = len - 1;
+  char last_char = input[last_index];
 
-  while (input[last_index] == ' ' || input[last_index] == '\t' || input[last_index] == '\n')
+  while (last_char == ' ' || last_char == '\t' || last_char == '\n') {
     --last_index;
-  
+    last_char = input[last_index];
+  }
+
   if (input[last_index + 1] == '\n') /* delete new line from input */
     input[last_index + 1] = '\0';
 

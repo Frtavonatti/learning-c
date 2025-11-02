@@ -2,8 +2,15 @@
 #define MAXLINES 1000
 #define TABS     8
 
-/* Exercise 1.20: Write a program detab that replaces tabs in the input with the proper number of blanks
-                  to space to the next tab stop. Assume a fixed set of tab stops, say every n colummns.
+/* Exercise 1.20: Write a program detab that replaces tabs in the input 
+                  with the proper number of blanks to space to the next tab stop. 
+                  Assume a fixed set of tab stops, say every n colummns.
+
+                  /* Example:
+                  Input: abc	def	ghi
+                  Output: abc     def     ghi
+                  Assuming TABS = 8, tab stops are at columns 0, 8, 16, etc.
+                  (with enough spaces to reach the next tab stop after each tab)
 */
 
 void get_line_and_detab(char str[], int lim);
