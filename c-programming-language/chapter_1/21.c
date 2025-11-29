@@ -18,6 +18,12 @@ char test_output1[] = ".foo:-bar;-..#comment";
 char test_input2[]  = ".......-foo:.....bar;......#comment";
 char test_output2[] = "-foo:-.bar;-...#comment";
 
+char test_input3[]  = ".foo:...bar\n.......-baz";
+char test_output3[] = ".foo:-bar\n-baz";
+
+char test_input4[]  = ".x........y";
+char test_output4[] = ".x-..y";     
+
 struct test_case {
    char *input;
    char *expected;
@@ -25,7 +31,9 @@ struct test_case {
 
 struct test_case test_suite[] = {
   { test_input1, test_output1 },
-  { test_input2, test_output2 }
+  { test_input2, test_output2 },
+  { test_input3, test_output3 },
+  { test_input4, test_output4 }
 };
 
 int main () {
@@ -42,41 +50,31 @@ int main () {
   return 0;
 }
 
-void flush_spaces(char str[], int *i, int *space_count) {
-  while (*space_count > 0) {
-    str[(*i)++] = '.';
-    (*space_count)--;
-  }
-}
-
 void entab (const char input[], char str[], int lim) {
   int i = 0, c;
   int space_count = 0;
-  int col = 0; // index for input string
+  int col = 0; // current line position
+  int idx = 0; // index for reading input
   
-  // while ((c = getchar()) != EOF)
-  while ((c = input[col++]) != '\0' && i < MAXLINES) {
-    int col_offset = col % TABS;
-
-    if (c == '.') {
+  while ((c = input[idx++]) != '\0' && i < lim) {
+    int col_offset = (col + 1) % TABS;
+    // printf("idx=%d c='%c' col=%d col_offset=%d space_count=%d\n", idx-1, c, col, col_offset, space_count);
+    if (c == '.' || c == '-') {
+      // printf("  -> Converting to TAB (space_count was %d)\n", space_count);
       space_count++;
+      col++;
       if (space_count == TABS || col_offset == 0) {
         str[i++] = '-';
         space_count = 0;
       }
-    }
-    else if (c == '-') {
-      if (col_offset == 0) {
-        space_count = 0;
-        str[i++] = '-';
-      } else {
-        flush_spaces(str, &i, &space_count);
-        str[i++] = '-';
+    } else {
+      // printf("  -> Flushing %d spaces\n", space_count);
+      while(space_count > 0) {
+        str[i++] = '.';
+        space_count--;
       }
-    }
-    else {
-      flush_spaces(str, &i, &space_count);
       str[i++] = c;
+      col = (c == '\n') ? 0 : col + 1;
     }
   }
 
