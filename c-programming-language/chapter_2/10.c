@@ -17,7 +17,7 @@ void lower (char arr[]) {
 
   while (c != '\0') {
     c = arr[i];
-    (c <= 'Z' && c != ' ') ? arr[i] = c + ('a' - 'A') : c;
+    (c >= 'A' && c <= 'Z') ? arr[i] = c + ('a' - 'A') : arr[i];
     i++;
   }
 }
