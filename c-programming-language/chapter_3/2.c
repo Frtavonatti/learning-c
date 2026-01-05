@@ -61,9 +61,9 @@ void scape_to_str(char s[], char t[]) {
         case 'n':
           s[j++] = '\n';
           break;
-        // case 'b':
-        //   s[j++] = '\b';
-        //   break;
+        case 'b':
+          s[j++] = '\b';
+          break;
         default:
           printf("error: case %c not covered\n", t[i]);
           break;
